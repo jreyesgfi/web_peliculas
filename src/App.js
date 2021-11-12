@@ -5,8 +5,8 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      {/*preloading*/}
+    <div>
+    {/*preloading*/}
     <div id="preloader">
         <img className="logo" src="images/logo1.png" alt="" width="119" height="58"/>
         <div id="status">
