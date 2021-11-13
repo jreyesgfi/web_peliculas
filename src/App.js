@@ -243,9 +243,10 @@ function App() {
               <a  href="moviegrid.html" className="grid"><i className="ion-grid"></i></a>
             </div>
 
-            <Pelicula titulo ="oblivion" calificacion="8.1"
-            director="Joss Whedon" actores="Robert Downey Jr., Chris Evans, Chris Hemsworth" fecha="1 May 2015" duracion= "2h21'"
-            descripcion="Earth's mightiest heroes must come together and learn to fight as a team if they are to stop the mischievous Loki and his alien army from enslaving humanity..."/>
+            <Pelicula titulo ="oblivion" calificacion="8.1" img = "images/uploads/mv1.jpg"
+            director="Joss Whedon" actores="Robert Downey Jr., Chris Evans, Chris Hemsworth" fecha="1 May 2015" duracion= "2h21'">
+            Earth's mightiest heroes must come together and learn to fight as a team if they are to stop the mischievous Loki and his alien army from enslaving humanity...
+            </Pelicula>
             <div className="movie-item-style-2">
               <img src="images/uploads/mv1.jpg" alt=""/>
               <div className="mv-item-infor">
