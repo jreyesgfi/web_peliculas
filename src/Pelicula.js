@@ -9,7 +9,7 @@ export default function Pelicula(props) {
                 <h6>
                     <a href="moviesingle.html">
                         {props.titulo}
-                        <span>(2012)</span>
+                        <span> {props.year}</span>
                     </a>
                 </h6>
                 <p className="rate">
