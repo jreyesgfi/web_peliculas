@@ -15,20 +15,25 @@ function App() {
 
   //Mostramos un número limitado de películas por página
   const pelPorPag = 2;
-  peliculas = peliculas.slice(
-    (paginaActual-1)*pelPorPag,
-    paginaActual * pelPorPag);
+  let cargarPeliculas = () =>
+    peliculas.slice(
+      (paginaActual - 1) * pelPorPag,
+      paginaActual * pelPorPag
+    );
+
+  //Número de páginas necesarias
+  const getTotalPaginas = () => (Math.ceil(peliculasJson.length / pelPorPag))
+
 
   return (
     <PageWrapper>
-
-      {peliculas.map(pelicula=>
-        <Pelicula titulo= {pelicula.titulo} year= {pelicula.year} calificacion={pelicula.calificacion} img={pelicula.img}
-                  director={pelicula.director} actores={pelicula.actores} fecha={pelicula.fecha} duracion={pelicula.duracion}>
-        {pelicula.descripcion}
-      </Pelicula>
+      {cargarPeliculas().map(pelicula =>
+        <Pelicula titulo={pelicula.titulo} year={pelicula.year} calificacion={pelicula.calificacion} img={pelicula.img}
+          director={pelicula.director} actores={pelicula.actores} fecha={pelicula.fecha} duracion={pelicula.duracion}>
+          {pelicula.descripcion}
+        </Pelicula>
       )}
-      <Paginacion pagina={paginaActual} total={4} onChange={(pagina) => { setPaginaActual(pagina); }} />
+      <Paginacion pagina={paginaActual} total={getTotalPaginas()} onChange={(pagina) => { setPaginaActual(pagina); }} />
 
     </PageWrapper>
   )
