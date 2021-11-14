@@ -3,6 +3,8 @@ import './App.css';
 import Pelicula from './Pelicula';
 import PageWrapper from './PageWrapper';
 import peliculasJson from './peliculas.json'
+import { useState } from 'react';
+import Paginacion from './Paginacion';
 
 
 
@@ -53,16 +55,22 @@ function App() {
           </div>
       </div>
     */}
+    
+  const [paginaActual, setPaginaActual] = useState(1);
+
   let peliculas = peliculasJson;
+
   return (
     <PageWrapper>
 
-      {peliculas.map(pelicula=>{
-        return <Pelicula titulo= {pelicula.titulo} calificacion={pelicula.calificacion} img={pelicula.img}
-        director={pelicula.director} actores={pelicula.actores} fecha={pelicula.fecha} duracion={pelicula.duracion}>
+      {peliculas.map(pelicula=>
+        <Pelicula titulo= {pelicula.titulo} calificacion={pelicula.calificacion} img={pelicula.img}
+                  director={pelicula.director} actores={pelicula.actores} fecha={pelicula.fecha} duracion={pelicula.duracion}>
         {pelicula.descripcion}
       </Pelicula>
-      })}
+      )}
+      <Paginacion pagina={paginaActual} total={4} onChange={(pagina) => { setPaginaActual(pagina); }} />
+
     </PageWrapper>
   )
 }

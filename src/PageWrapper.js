@@ -240,7 +240,7 @@ export default function PageWrapper(props) {
                             </div>
                             {props.children}
 
-                            <Paginacion pagina={1} total={4} onChange={(pagina) => { alert(pagina); }} />
+                            
 
                         </div>
                         <div className="col-md-4 col-sm-12 col-xs-12">
