@@ -13,30 +13,56 @@ function App() {
 
   let peliculas = peliculasJson;
 
-  //Mostramos un número limitado de películas por página
-  const pelPorPag = 2;
-  let cargarPeliculas = () =>
-    peliculas.slice(
-      (paginaActual - 1) * pelPorPag,
-      paginaActual * pelPorPag
-    );
+  //Cargar las peliculas de un servidor
+  const buscarPelicula = async () => {
+    let url = 'https://lucasmoy.dev/data/react/peliculas.json';
 
-  //Número de páginas necesarias
-  const getTotalPaginas = () => (Math.ceil(peliculasJson.length / pelPorPag))
+    //Petición asincrónica
+    let respuesta = await fetch(url, {
+      "method": 'GET',
+      "mode": 'no-cors',
+      "headers": {
+        "Accept": 'application/json',
+        "Content-Type": 'aplication/json',
+        "Origin": 'https://lucasmoy.dev/data/react/peliculas.json'
+      }
+    });
+    let json = await respuesta.json();
+    alert(json);
+
+  }
+
+  //Se puede hacer que la función espere
+  /* async ()=>{
+   var resultado = await fetch(url,...)*/
+
+buscarPelicula();
+
+//Mostramos un número limitado de películas por página
+const pelPorPag = 2;
+let cargarPeliculas = () =>
+  peliculas.slice(
+    (paginaActual - 1) * pelPorPag,
+    paginaActual * pelPorPag
+  );
 
 
-  return (
-    <PageWrapper>
-      {cargarPeliculas().map(pelicula =>
-        <Pelicula titulo={pelicula.titulo} year={pelicula.year} calificacion={pelicula.calificacion} img={pelicula.img}
-          director={pelicula.director} actores={pelicula.actores} fecha={pelicula.fecha} duracion={pelicula.duracion}>
-          {pelicula.descripcion}
-        </Pelicula>
-      )}
-      <Paginacion pagina={paginaActual} total={getTotalPaginas()} onChange={(pagina) => { setPaginaActual(pagina); }} />
+//Número de páginas necesarias
+const getTotalPaginas = () => (Math.ceil(peliculasJson.length / pelPorPag))
 
-    </PageWrapper>
-  )
+
+return (
+  <PageWrapper>
+    {cargarPeliculas().map(pelicula =>
+      <Pelicula titulo={pelicula.titulo} year={pelicula.year} calificacion={pelicula.calificacion} img={pelicula.img}
+        director={pelicula.director} actores={pelicula.actores} fecha={pelicula.fecha} duracion={pelicula.duracion}>
+        {pelicula.descripcion}
+      </Pelicula>
+    )}
+    <Paginacion pagina={paginaActual} total={getTotalPaginas()} onChange={(pagina) => { setPaginaActual(pagina); }} />
+
+  </PageWrapper>
+)
 }
 
 export default App;
