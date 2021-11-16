@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Pelicula from './Pelicula';
 import PageWrapper from './PageWrapper';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Paginacion from './Paginacion';
 
 
@@ -11,6 +11,12 @@ function App() {
   const [paginaActual, setPaginaActual] = useState(1);
   const [peliculas, setPeliculas] = useState([]);
 
+  /*Incluimos un hook para cargar las pelis del servidor
+  unicamente cuando haya cargado nuestra página*/
+  useEffect(()=>{
+    buscarPeliculas();
+  }, []); //Solo se ejecuta la función cuando se renderice el elemento entre llaves.
+  //Si es vacío solo se ejecuta cuando se renderice la página
 
   //Solicitamos las películas de un servidor
   function buscarPeliculas() {
@@ -27,7 +33,6 @@ function App() {
       console.log(error);
     }
   };
-  buscarPeliculas();
 
   //Mostramos un número limitado de películas por página
   const pelPorPag = 4;
