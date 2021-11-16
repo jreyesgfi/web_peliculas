@@ -16,17 +16,10 @@ function App() {
   const buscarPeliculas = async () => {
     let url = 'https://lucasmoy.dev/data/react/peliculas.json'
     try {
-      const response = await fetch(url, {
-        "method": 'GET',
-        "mode": 'no-cors',
-        "headers": {
-          "Accept": 'application/json',
-          "Content-Type": 'application/json'
-        }
-      });
+      const response = await fetch(url);
       //console.log(response.status);
       if (response.status === 200) {
-        alert(await response.json());
+        setMovies(await response.json());
       }
     } catch (error) {
       console.log(error);
@@ -34,7 +27,7 @@ function App() {
   };
   buscarPeliculas();
   function setMovies(data) {
-    alert(data);
+    console.log(data);
   }
 
 
