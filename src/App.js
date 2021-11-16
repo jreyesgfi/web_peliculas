@@ -16,16 +16,24 @@ function App() {
   const buscarPeliculas = async () => {
     let url = 'https://lucasmoy.dev/data/react/peliculas.json'
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, {
+        "method": 'GET',
+        "mode": 'no-cors',
+        "headers": {
+          "Accept": 'application/json',
+          "Content-Type": 'application/json'
+        }
+      });
       //console.log(response.status);
-      if(response.status === 200)
-        setMovies(await response.json());
+      if (response.status === 200) {
+        alert(await response.json());
+      }
     } catch (error) {
       console.log(error);
     }
   };
   buscarPeliculas();
-  function setMovies(data){
+  function setMovies(data) {
     alert(data);
   }
 
@@ -33,56 +41,31 @@ function App() {
 
   let peliculas = peliculasJson;
 
-  //Cargar las peliculas de un servidor
-  const buscarPelicula = async () => {
-    let url = 'https://lucasmoy.dev/data/react/peliculas.json';
-
-    //Petición asincrónica
-    let respuesta = await fetch(url, {
-      "method": 'GET',
-      "mode": 'no-cors',
-      "headers": {
-        "Accept": 'application/json',
-        "Content-Type": 'aplication/json',
-        "Origin": 'https://lucasmoy.dev/data/react/peliculas.json'
-      }
-    });
-    let json = await respuesta.json();
-    alert(json);
-
-  }
-
-  //Se puede hacer que la función espere
-  /* async ()=>{
-   var resultado = await fetch(url,...)*/
-
-buscarPelicula();
-
-//Mostramos un número limitado de películas por página
-const pelPorPag = 2;
-let cargarPeliculas = () =>
-  peliculas.slice(
-    (paginaActual - 1) * pelPorPag,
-    paginaActual * pelPorPag
-  );
+  //Mostramos un número limitado de películas por página
+  const pelPorPag = 2;
+  let cargarPeliculas = () =>
+    peliculas.slice(
+      (paginaActual - 1) * pelPorPag,
+      paginaActual * pelPorPag
+    );
 
 
-//Número de páginas necesarias
-const getTotalPaginas = () => (Math.ceil(peliculasJson.length / pelPorPag))
+  //Número de páginas necesarias
+  const getTotalPaginas = () => (Math.ceil(peliculasJson.length / pelPorPag))
 
 
-return (
-  <PageWrapper>
-    {cargarPeliculas().map(pelicula =>
-      <Pelicula titulo={pelicula.titulo} year={pelicula.year} calificacion={pelicula.calificacion} img={pelicula.img}
-        director={pelicula.director} actores={pelicula.actores} fecha={pelicula.fecha} duracion={pelicula.duracion}>
-        {pelicula.descripcion}
-      </Pelicula>
-    )}
-    <Paginacion pagina={paginaActual} total={getTotalPaginas()} onChange={(pagina) => { setPaginaActual(pagina); }} />
+  return (
+    <PageWrapper>
+      {cargarPeliculas().map(pelicula =>
+        <Pelicula titulo={pelicula.titulo} year={pelicula.year} calificacion={pelicula.calificacion} img={pelicula.img}
+          director={pelicula.director} actores={pelicula.actores} fecha={pelicula.fecha} duracion={pelicula.duracion}>
+          {pelicula.descripcion}
+        </Pelicula>
+      )}
+      <Paginacion pagina={paginaActual} total={getTotalPaginas()} onChange={(pagina) => { setPaginaActual(pagina); }} />
 
-  </PageWrapper>
-)
+    </PageWrapper>
+  )
 }
 
 export default App;
