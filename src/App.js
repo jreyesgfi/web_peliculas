@@ -13,14 +13,16 @@ function App() {
 
 
   //Solicitamos las películas de un servidor
-  const buscarPeliculas = async () => {
+  function buscarPeliculas(){
     let url = 'https://lucasmoy.dev/data/react/peliculas.json'
     try {
-      const response = await fetch(url);
+      fetch(url).then(response => {
+        if (response.status === 200) {
+          response.json().then(data=> setMovies(data));
+          return null;
+        }
+      });
       //console.log(response.status);
-      if (response.status === 200) {
-        setMovies(await response.json());
-      }
     } catch (error) {
       console.log(error);
     }
