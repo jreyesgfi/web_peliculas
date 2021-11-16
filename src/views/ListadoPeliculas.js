@@ -1,7 +1,7 @@
 import PageWrapper from './PageWrapper';
 import { useEffect, useState } from 'react';
-import Paginacion from './Paginacion.js';
-import Pelicula from './Pelicula.js'
+import Paginacion from '../Paginacion.js';
+import Pelicula from '../Pelicula.js'
 
 
 export default function ListadoPeliculas() {

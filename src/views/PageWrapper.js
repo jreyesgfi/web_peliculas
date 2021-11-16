@@ -1,4 +1,4 @@
-import Paginacion from "./Paginacion";
+import Paginacion from "../Paginacion";
 
 export default function PageWrapper(props) {
     return (
