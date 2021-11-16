@@ -11,6 +11,26 @@ import Paginacion from './Paginacion';
 function App() {
   const [paginaActual, setPaginaActual] = useState(1);
 
+
+  //Solicitamos las películas de un servidor
+  const buscarPeliculas = async () => {
+    let url = 'https://lucasmoy.dev/data/react/peliculas.json'
+    try {
+      const response = await fetch(url);
+      //console.log(response.status);
+      if(response.status === 200)
+        setMovies(await response.json());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  buscarPeliculas();
+  function setMovies(data){
+    alert(data);
+  }
+
+
+
   let peliculas = peliculasJson;
 
   //Mostramos un número limitado de películas por página

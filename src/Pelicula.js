@@ -1,7 +1,8 @@
 export default function Pelicula(props) {
     function nombrarActores() {   
     {props.actores.split(",").forEach((actor)=>console.log(actor));}}
-    {nombrarActores();}
+    {//nombrarActores();
+    }
     return(
         <div className="movie-item-style-2">
             <img src= {props.img} alt="" />
