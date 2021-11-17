@@ -111,18 +111,10 @@ export default function PageWrapper(props) {
                         {/* Collect the nav links, forms, and other content for toggling */}
                         <div className="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
                             <ul className="nav navbar-nav flex-child-menu menu-left">
-                                <li className="hidden">
-                                    <a href="#page-top"></a>
-                                </li>
                                 <li className="dropdown first">
-                                    <a className="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
-                                        Home <i className="fa fa-angle-down" aria-hidden="true"></i>
+                                    <a href="/#" className="btn btn-default lv1" >
+                                        HOME
                                     </a>
-                                    <ul className="dropdown-menu level1">
-                                        <li><a href="index-2.html">Home 01</a></li>
-                                        <li><a href="homev2.html">Home 02</a></li>
-                                        <li><a href="homev3.html">Home 03</a></li>
-                                    </ul>
                                 </li>
                                 <li className="dropdown first">
                                     <a href="/blog" className="btn btn-default lv1" >
