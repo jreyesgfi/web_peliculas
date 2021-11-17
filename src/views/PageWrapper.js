@@ -125,10 +125,10 @@ export default function PageWrapper(props) {
                                     </ul>
                                 </li>
                                 <li className="dropdown first">
-                                    <a className="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-                                        movies<i className="fa fa-angle-down" aria-hidden="true"></i>
+                                    <a href="/blog" className="btn btn-default lv1" >
+                                        BLOG
                                     </a>
-                                    <ul className="dropdown-menu level1">
+                                    {/*<ul className="dropdown-menu level1">
                                         <li className="dropdown">
                                             <a href="#" className="dropdown-toggle" data-toggle="dropdown" >Movie grid<i className="ion-ios-arrow-forward"></i></a>
                                             <ul className="dropdown-menu level2">
@@ -139,7 +139,7 @@ export default function PageWrapper(props) {
                                         <li><a href="movielist.html">Movie list</a></li>
                                         <li><a href="moviesingle.html">Movie single</a></li>
                                         <li className="it-last"><a href="seriessingle.html">Series single</a></li>
-                                    </ul>
+                                    </ul>*/}
                                 </li>
                                 <li className="dropdown first">
                                     <a className="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
@@ -240,7 +240,7 @@ export default function PageWrapper(props) {
                             </div>
                             {props.children}
 
-                            
+
 
                         </div>
                         <div className="col-md-4 col-sm-12 col-xs-12">
